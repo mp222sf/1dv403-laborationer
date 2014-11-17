@@ -7,13 +7,10 @@ window.onload = function(){
 		
 		// Plats för förändring.
 		var stringLenght = str.length;
-		var newString = "";
+		var newString;
 		
 		for (var i = 0; i < stringLenght; i++) {
-			if (str.charAt(i) === "A") {
-				newString += "#";
-			}
-			else if (str.charAt(i) === "a") {
+			if (str.charAt(i) === "A" || str.charAt(i) === "a") {
 				newString += "#";
 			}
 			else if (str.charAt(i) === str.charAt(i).toUpperCase()) {

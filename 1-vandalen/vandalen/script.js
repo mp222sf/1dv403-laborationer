@@ -4,8 +4,10 @@ var makePerson = function(persArr){
     
     
     // Skapar array med namn från alla objekt.
-    var namesArray = [persArr[0].name, persArr[1].name, persArr[2].name];
-    
+    var names = persArr.map(function(person){
+        return person.name;
+    });
+
     // Kontrollerar att namnen är av typen "string".
     for (var i = 0; i < persArr.length; i++) {
         if (typeof persArr[i].name !== "string") {
@@ -17,23 +19,31 @@ var makePerson = function(persArr){
     function localeSort(string1, string2) {
         return string1.toString().localeCompare(string2.toString());
     }
-    
-    // Sorterar arrayen.
-    namesArray.sort(localeSort);
+    names.sort(localeSort);
     
     // Skapar en sträng med de sorterade namnen.
-    var namesNewString = "";
-    namesNewString += namesArray[0] + ", " + namesArray[1] + ", " + namesArray[2];
+    var namesNewString = names.join(", ");
     
-    // Skapar en array med alla åldrar från objekten. Sorterar sedan.
-    var ageArray = [persArr[0].age, persArr[1].age, persArr[2].age];
-    ageArray.sort();
+    // Skapar en array med alla åldrar från objekten. Sorterar sedan. Adderar även ihop alla åldrar.
+    var agesTotal = 0;
+    var ages = persArr.map(function(person){
+        agesTotal += person.age;
+        return person.age;
+    });
+    ages.sort();
+    
+    // Kontrollerar att åldrarna är av typen "number".
+    for (var i = 0; i < persArr.length; i++) {
+        if (typeof agesTotal !== "number") {
+            throw new Error("Jaaadu... Detta är inget nummer.");
+        }
+    }
 
     // Skapar det nya objektet med de nya värdena.
     var newObject = {
-        minAge: ageArray[0],
-        maxAge: ageArray[2],
-        averageAge: Math.round(((ageArray[0]+ageArray[1]+ageArray[2]) / 3)),
+        minAge: ages[0],
+        maxAge: ages[ages.length-1],
+        averageAge: Math.round(((agesTotal) / ages.length)),
         names: namesNewString
     };
     

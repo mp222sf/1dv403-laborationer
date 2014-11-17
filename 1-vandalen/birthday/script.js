@@ -8,17 +8,18 @@ window.onload = function(){
 		if (date.charAt(4) !== "-" && date.charAt(7) !== "-"){
 			throw new Error("Jaaadu... Det här blev fel va?!");
 		}
-		
+		console.log(date);
 		// Skapa sedan ytterligare ett datumobjekt med dagens datum.
 		var dateNow = new Date();
-		
+		var nextBirthdayDate = new Date(date);		
 		// Skapa utifrån det inlästa datumet ett datumobjekt som representerar när användaren fyller år nästa gång.
 		// Utgå ifrån att användaren fyller år i år. Fundera på hur du kan få fram aktuellt år utan att skriva in det i klartext.
+		/*
 		var birthdayYear = date.substring(0, 4);
 		var birthdayMonth = date.substring(5, 7);
 		var birthdayDay = date.substring(8, 10);
 		var nextBirthdayDate = new Date(birthdayYear, (birthdayMonth-1), birthdayDay);
-
+		*/
 		//Ändrar "Födelseåret" till året just nu.
 		nextBirthdayDate.setFullYear(dateNow.getFullYear());
 
@@ -27,12 +28,13 @@ window.onload = function(){
 				nextBirthdayDate.setFullYear(dateNow.getFullYear()+1);
 		 		console.log("ändrad");
 		}
-		else if (dateNow.getMonth() === nextBirthdayDate.getMonth()) {
-			if (dateNow.getDate() > nextBirthdayDate.getDate()) {
-				nextBirthdayDate.setFullYear(dateNow.getFullYear()+1);
+		else{
+			if (dateNow.getMonth() === nextBirthdayDate.getMonth()) {
+				if (dateNow.getDate() > nextBirthdayDate.getDate()) {
+					nextBirthdayDate.setFullYear(dateNow.getFullYear()+1);
+				}
 			}
 		}
-		else {}
 
 		// Genom att subtrahera antalet millisekunder till dagens datum från antalet millisekunder då du fyller år får du 
 		// skillnaden mellan datumen. Kan du via denna skillnad se om användaren fyllt år? Om så vad blir då nästa steg?
