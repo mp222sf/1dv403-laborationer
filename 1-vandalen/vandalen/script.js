@@ -8,8 +8,9 @@ var makePerson = function(persArr){
         return person.name;
     });
 
+    
     // Kontrollerar att namnen är av typen "string".
-    for (var i = 0; i < persArr.length; i++) {
+    for (var i = 0; i < names.length; i++) {
         if (typeof persArr[i].name !== "string") {
             throw new Error("Jaaadu... Detta är ingen sträng.");
         }
@@ -32,12 +33,6 @@ var makePerson = function(persArr){
     });
     ages.sort();
     
-    // Kontrollerar att åldrarna är av typen "number".
-    for (var i = 0; i < persArr.length; i++) {
-        if (typeof agesTotal !== "number") {
-            throw new Error("Jaaadu... Detta är inget nummer.");
-        }
-    }
 
     // Skapar det nya objektet med de nya värdena.
     var newObject = {

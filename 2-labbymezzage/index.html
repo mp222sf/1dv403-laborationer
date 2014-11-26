@@ -3,11 +3,35 @@
 <head>
 	<meta charset="UTF-8" />
  	<title>Laboration 2</title>
+ 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
     <body>
+        <script src="message.js"></script>
+        <script src="engine.js"></script>
+        <script>
+        	  var mess = new Message("Testmeddelande", new Date());
+              engine.messages.push(mess);
+              var mess2 = new Message("objekt222", new Date());
+              engine.messages.push(mess2);
+              var mess3 = new Message("objektet333", new Date());
+              engine.messages.push(mess3);
+        </script>
 
-    	  <script src="message.js"></script>
-    	  <script src="engine.js"></script>
+        <div id="container">
+            <div id="header">
+                <div id="headerCenter" class="center">
+                    <h1>Labby Message</h1>
+                </div>
+            </div>
+            <div id="content">
+                <div id="messageBox">
+                    <p class="textright">Antal meddelanden</p>
+                    <textarea></textarea>
+                    <input type="submit">
+                </div>
+            </div>
+            
+        </div>
         
     </body>
 </html>
