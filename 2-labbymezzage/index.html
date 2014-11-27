@@ -9,12 +9,7 @@
         <script src="message.js"></script>
         <script src="engine.js"></script>
         <script>
-        	  var mess = new Message("Testmeddelande", new Date());
-              engine.messages.push(mess);
-              var mess2 = new Message("objekt222", new Date());
-              engine.messages.push(mess2);
-              var mess3 = new Message("objektet333", new Date());
-              engine.messages.push(mess3);
+                
         </script>
 
         <div id="container">
@@ -27,12 +22,11 @@
                 
                 <div id="messageBox">
                     <div id="writtenMessages"></div>
-                    <textarea></textarea>
-                    <input type="submit">
+                    <textarea id="textmeddelande"></textarea>
+                    <input type="submit" id="sendButton">
                 </div>
             </div>
             
         </div>
-        
     </body>
 </html>

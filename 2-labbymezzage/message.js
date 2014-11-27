@@ -15,6 +15,8 @@ function Message(message, date) {
     this.setDate = function (_date) {
         date = _date;
     };
+    
+    
 }
 
 Message.prototype.toString = function () {
