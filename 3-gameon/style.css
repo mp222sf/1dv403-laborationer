@@ -49,6 +49,8 @@ table {
 #container {
     width: 100%;
     min-height: 700px;
+    padding-top: 50px;
+    text-align: center;
     
     /* Bakgrund tagen från http://www.colorzilla.com/gradient-editor/. */
     background: #cedce7; /* Old browsers */
@@ -62,117 +64,22 @@ table {
 
 }
 
-#header {
-    display: block;
-    width: 100%;
-}
-
-#headerCenter {
-    width: 500px;
-}
-
-#headerCenter h1 {
-    font-size: 100px;
-    font-family: leaguegothic;
-    text-align:right;
-    position: relative;
-    -webkit-animation: mymove 3s 1; /* Chrome, Safari, Opera */
-    -webkit-animation-delay: 0s; /* Chrome, Safari, Opera */
-    animation: mymove 3s;
-    animation-delay: 0s;
-
-}
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes mymove {
-    from {left: -200px;}
-    to {left: 0px;}
-}
-
-@keyframes mymove {
-    from {left: -200px;}
-    to {left: 0px;}
-}
-
-#content {
-    display: block;
-    width:100%;
-}
-
-#messageBox {
-    width:500px;
-    min-height: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 20px;
-    background-color:#FFFFFF;
-    border-style: solid;
-    border-width: 1px;
+#memoryBox {
+    border: 1px solid black;
     text-align: center;
-    padding: 5px;
-}
-
-#messageBox textarea {
-    width: 90%;
-    min-height: 253px;
-}
-
-#messageBox input {
-    float: right;
-    clear: both;    
-}
-
-#writtenMessages {
-    position: relative;
-    width: 90%;
+    background-color: #FFFFFF;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    padding: 10px;
 }
 
-#writtenMessages img {
-    width: 15px;
-    height: 15px;
+#memoryBox a.hover {
+}
+#memoryBox a.active {
 }
 
-#messageBoxEnd {
-    height: 22px;
-}
-
-#countValue {
-    display: inline;
-}
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    text-align:center;
-}
-.textright {
-    text-align:right;
-    font-family: leaguegothic;
-    font-size: 30px;
-}
-.aMessage {
-    width:97%;
-    min-height: 26px;
-    background-color: #FF9966;
-    border: 1px solid;
-    border-color: #B26B47;
-    padding: 5px;
-    margin-bottom: 3px;
-    float: right;
-    clear: both;
-}
-.floatright {
-    display: inline;
-    font-size: 60%;
-    margin-top: 5px;
-    float: right;
-    clear: both;
-}
-
-
-@font-face {
-    font-family: leaguegothic;
-    src: url(leaguegothic.ttf);
+#result {
+    font-family: Tahoma;
+    font-size: 18px;
+    padding: 10px;
 }
