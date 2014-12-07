@@ -7,7 +7,8 @@ var memory = {
     memoryCols: 4,
     turnedCounter1: "",
     turnedCounter2: "",
-    turnedCountersCount: 0,
+    count: 0,
+    readyForNextMove: true,
     correctGuesses: 0,
     
     // Funktion som körs när sidan är laddad.
@@ -66,7 +67,12 @@ var memory = {
     
     turnCounter:function(){
         
-        // Kollar först att brickan inte redan är öppen.
+        // Är "readyForNextMove" false, så har setTimeouten inte hunnit ladda klart. Kan därför ej fortsätta innan den är klar.
+        if (memory.readyForNextMove === false){
+            return;
+        }
+
+        // Kollar först om brickan redan är öppen.
         if (this.firstChild.src !== "https://1dv403-laborationer-mp222sf.c9.io/3-gameon/memory/pics/0.png") {
             return;
         }
@@ -74,13 +80,15 @@ var memory = {
         // Öppnar brickan och visar vilken bild.
         this.firstChild.setAttribute("src", "memory/pics/" + memory.memories[this.id] + ".png");
         
+        
+        
         // Om rest av antal vända brickor är 0 tilldelas "turnedCounter1" ett värde.
-        if (memory.turnedCountersCount % 2 === 0) {
+        if (memory.count % 2 === 0) {
             memory.turnedCounter1 = this.id;
         }
         
         //  Är resten 1 tilldelas "turnedCounter2" ett värde.
-        if (memory.turnedCountersCount % 2 === 1) {
+        if (memory.count % 2 === 1) {
         memory.turnedCounter2 = this.id;
         
             // Om det är exakt likadana bilder så adderas "correctGuesses" med 1. 
@@ -89,24 +97,28 @@ var memory = {
             } 
             
             // Om bilderna inte är exakt likadana - en setTimeout körs som ändrar brickorna till frågetecken. (1000ms)
+            // "readyForNextMove" ändras först till false. När settimeouten sedan laddas klar ändras den till true och nästa drag kan göras.
             else {
+                memory.readyForNextMove = false;
+                
                 setTimeout(function(){
                     document.getElementById(memory.turnedCounter1).firstChild.setAttribute("src", "memory/pics/0.png");
                     document.getElementById(memory.turnedCounter2).firstChild.setAttribute("src", "memory/pics/0.png");
+                    memory.readyForNextMove = true;
                 }, 1000); 
             }
         }
         
-        // "turnedCountersCount" adderas med 1.
-        memory.turnedCountersCount += 1;
+        // "count" adderas med 1.
+        memory.count += 1;
         
         // Skriver ut info om antal drag i dokumentet.
-        if (memory.turnedCountersCount % 2 === 0) {
-            document.getElementById("result").innerHTML = "Antal drag: " + (memory.turnedCountersCount / 2);
+        if (memory.count % 2 === 0) {
+            document.getElementById("result").innerHTML = "Antal drag: " + (memory.count / 2);
             
             // Om "correctGuesses" är lika mycket som Rows*Cols/2 så är spelet slut och avklarat.
             if (memory.correctGuesses == (memory.memoryRows * memory.memoryCols) / 2) {
-                document.getElementById("result").innerHTML = "Grattis! Du klarade det!<br>Antal drag: " + (memory.turnedCountersCount / 2);
+                document.getElementById("result").innerHTML = "Grattis! Du klarade det!<br>Antal drag: " + (memory.count / 2);
             }
         }
     }

@@ -48,7 +48,7 @@ table {
 
 #container {
     width: 100%;
-    min-height: 700px;
+    min-height: 1000px;
     
     /* Bakgrund tagen från http://www.colorzilla.com/gradient-editor/. */
     background: #cedce7; /* Old browsers */

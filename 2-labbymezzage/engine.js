@@ -11,18 +11,21 @@ var engine = {
     },
 
     init:function(){
-        var link = document.getElementById("sendButton").addEventListener("click", function(){
+        // Om button-knappen klickas.
+        document.getElementById("sendButton").addEventListener("click", function(){
             var textareaInput = document.getElementById("textmeddelande").value;
             engine.instansiate(textareaInput);
         });
         
-        var link2 = document.getElementById("textmeddelande").addEventListener("keypress", keyPressTextField, false);
+        // Om button-knappen klickas med enter.
+        document.getElementById("textmeddelande").addEventListener("keypress", keyPressTextField, false);
         
         function keyPressTextField(e){
             var keyCode = e.keyCode;
             if(keyCode == 13) {
                 if (e.shiftKey === false)
                 {
+                    e.preventDefault();
                     var textareaInput = document.getElementById("textmeddelande").value;
                     engine.instansiate(textareaInput); 
                 }
@@ -56,7 +59,7 @@ var engine = {
         newAElement.appendChild(newImgElement);
         newDivElement2.appendChild(newAElement);
         
-        var showTime = document.getElementsByTagName("a")[messageID * 2].addEventListener("click", function(){
+        newAElement.addEventListener("click", function(){
             var monthNames = [ "januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december" ];
             var messageTime = engine.messages[messageID].getDate();
             alert("Inlägget skapades den "+messageTime.getDate()+" "+monthNames[messageTime.getMonth()]+" "+messageTime.getFullYear()+" klockan "+messageTime.toLocaleTimeString());
@@ -70,21 +73,11 @@ var engine = {
         newAElement2.appendChild(newImgElement2)
         newDivElement2.appendChild(newAElement2);
         
-        var deleteMessage = document.getElementsByTagName("a")[((messageID * 2)+ 1)].addEventListener("click", function(){
-            
-            function myFunction() {
-                var txt;
-                var r = confirm("Fortsätter du så tas meddelandet bort.");
-                if (r === true) {
-                    engine.messages.splice(messageID, 1);
-                    engine.renderMessages();
-                } else {
-                    
-                }
-                
+        newAElement2.addEventListener("click", function(){
+            if (confirm("Fortsätter du så tas meddelandet bort.")) {
+                engine.messages.splice(messageID, 1);
+                engine.renderMessages();
             }
-            myFunction();
-            
         });
         
         //Ny p-tagg inlagd i div-tag.

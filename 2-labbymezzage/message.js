@@ -28,9 +28,4 @@ Message.prototype.getHTMLText = function() {
     return newHTMLText;
 };
 
-/* Message.prototype.getDateText = function() {
-    
-};
-*/
-
 
